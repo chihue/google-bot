@@ -14,7 +14,11 @@ fastify.get('/live', async (request, reply) => {
     return {
         ok: true,
         msg: 'Server is running',
-        mongoLive
+        mongoLive,
+        ip: request.ip,
+        ipRaw: request.raw.ip || '',
+        ips: request.ips,
+        ipRemote: request.raw.connection.remoteAddress
     }
 });
 
@@ -24,7 +28,7 @@ const start = async () => {
     try {
         await fastify.listen({
             port: process.env.PORT || 3000,
-            host: process.env.HOST || '127.0.0.1'
+            host: process.env.HOST || '127.0.0.1',
         });
     } catch (err) {
         fastify.log.error(err);
