@@ -36,3 +36,11 @@ export const collections = Object.freeze({
 export function getCollection(collection) {
     return db.collection(collection);
 };
+
+export async function isLive() {
+    try {
+        const mmongoResponse = await db.command({ ping: 1 });
+        return mmongoResponse.ok === 1;
+    } catch (err) { }
+    return false;
+}

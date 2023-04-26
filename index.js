@@ -1,6 +1,6 @@
 import Fastify from 'fastify';
 import dotenv from 'dotenv';
-import { MongoConfig } from './config/MongoConfig.js';
+import { MongoConfig, isLive } from './config/MongoConfig.js';
 
 dotenv.config();
 
@@ -8,8 +8,14 @@ const fastify = Fastify({
     logger: true
 });
 
-fastify.get('/', async (request, reply) => {
-    return { hello: 'world' }
+fastify.get('/live', async (request, reply) => {
+    const mongoLive = await isLive();
+
+    return {
+        ok: true,
+        msg: 'Server is running',
+        mongoLive
+    }
 });
 
 const start = async () => {
