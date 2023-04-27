@@ -77,8 +77,11 @@ export async function processMessage({
     argumentText = '',
     email,
     displayName = '',
+    isDialogEvent = false,
 }) {
-    let response = {};
+    let response = {
+        text: `Hola ${displayName}, no entiendo lo que me dices`
+    };
     try {
         if (commandId) {
             switch (commandId) {
@@ -88,7 +91,7 @@ export async function processMessage({
                     };
                     break;
                 case aviableActions.CHATGPTKEY.id:
-                    response = dialog;
+                    if (isDialogEvent) response = dialog;
                     break;
                 case aviableActions.EXPORTAR.id:
                 case aviableActions.IMPORTAR.id:
@@ -102,10 +105,6 @@ export async function processMessage({
                     };
                     break;
             }
-        } else {
-            response = {
-                text: `Hola ${displayName}, no entiendo lo que me dices`
-            };
         }
     } catch (err) {
         console.log(err);

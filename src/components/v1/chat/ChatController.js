@@ -20,6 +20,7 @@ export const chatRequest = {
         const argumentText = body.message?.argumentText;
         const email = body.user?.email;
         const displayName = body.user?.displayName;
+        const isDialogEvent = body.isDialogEvent;
 
         let text = 'Hola';
 
@@ -30,6 +31,7 @@ export const chatRequest = {
             argumentText,
             email,
             displayName,
+            isDialogEvent,
         });
     },
 };
