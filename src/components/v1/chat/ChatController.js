@@ -15,6 +15,8 @@ export const chatRequest = {
     handler: async (req, _res) => {
         const body = req.body;
 
+        console.log(body)
+
         const type = body.type;
         const commandId = body.slashCommand?.commandId;
         const argumentText = body.message?.argumentText;
