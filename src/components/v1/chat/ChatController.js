@@ -18,7 +18,7 @@ export const chatRequest = {
         console.log(body)
 
         const type = body.type;
-        const commandId = body.slashCommand?.commandId;
+        const commandId = body.message.slashCommand?.commandId;
         const argumentText = body.message?.argumentText;
         const email = body.user?.email;
         const displayName = body.user?.displayName;
