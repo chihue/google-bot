@@ -25,6 +25,7 @@ export async function processMessage({
     };
     try {
         if (commandId) {
+            console.log("Command id: ", aviableActions.CHATGPT.id)
             switch (commandId) {
                 case aviableActions.CHATGPT.id:
                     response = makeChatGPTRequest({
