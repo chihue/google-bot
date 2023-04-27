@@ -2,10 +2,10 @@ import { getCollection, collections } from '../../../config/MongoConfig.js'
 import Request from '../../../utils/Request.js';
 
 const aviableActions = Object.freeze({
-    CHATGPT: { id: 1, "name": "ChatGPT", "description": "Hacer una preggunta a ChatGPT", "arguments": "texto a buscar" },
-    CHATGPTKEY: { id: 4, "name": "ChatGPT Key", "description": "Settear la key de Chat GPT", "arguments": "Key" },
-    EXPORTAR: { id: 2, "name": "Exportar", "description": "Exportar switching luz", "arguments": "" },
-    IMPORTAR: { id: 3, "name": "Importar", "description": "Importar switching luz", "arguments": "" }
+    CHATGPT: { id: "1", "name": "ChatGPT", "description": "Hacer una preggunta a ChatGPT", "arguments": "texto a buscar" },
+    CHATGPTKEY: { id: "4", "name": "ChatGPT Key", "description": "Settear la key de Chat GPT", "arguments": "Key" },
+    EXPORTAR: { id: "2", "name": "Exportar", "description": "Exportar switching luz", "arguments": "" },
+    IMPORTAR: { id: "3", "name": "Importar", "description": "Importar switching luz", "arguments": "" }
 })
 
 export async function processMessage({
@@ -20,7 +20,7 @@ export async function processMessage({
     else email = email.trim().toLowerCase();
     if (argumentText) argumentText = argumentText.trim();
 
-    console.log("Command id1: ", aviableActions.CHATGPT.id)
+    console.log("Command id1: ", commandId, typeof commandId, typeof aviableActions.CHATGPT.id)
 
 
     let response = {
@@ -28,7 +28,7 @@ export async function processMessage({
     };
     try {
         if (commandId) {
-            console.log("Command id: ", aviableActions.CHATGPT.id)
+            console.log("Command id: ", commandId)
             switch (commandId) {
                 case aviableActions.CHATGPT.id:
                     response = makeChatGPTRequest({
