@@ -11,7 +11,7 @@ export default async (server) => {
 
     server.route({
         method: "POST",
-        url: "/test",
+        url: "",
         handler: chatRequest.handler
     });
 }
