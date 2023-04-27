@@ -7,3 +7,16 @@ export const testPublicRoutes = {
         };
     },
 };
+
+export const chatRequest = {
+    schema: {},
+    handler: async (req, _res) => {
+        let text = 'Hola';
+
+        console.log(req.body)
+
+        return {
+            text
+        };
+    },
+};

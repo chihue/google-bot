@@ -1,4 +1,4 @@
-import { testPublicRoutes } from './ChatController.js';
+import { testPublicRoutes, chatRequest } from './ChatController.js';
 
 //Route -> /v1/public/chat/test
 
@@ -7,5 +7,11 @@ export default async (server) => {
         method: "GET",
         url: "/test",
         handler: testPublicRoutes.handler
+    });
+
+    server.route({
+        method: "POST",
+        url: "/test",
+        handler: chatRequest.handler
     });
 }
