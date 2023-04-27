@@ -20,6 +20,9 @@ export async function processMessage({
     else email = email.trim().toLowerCase();
     if (argumentText) argumentText = argumentText.trim();
 
+    console.log("Command id1: ", aviableActions.CHATGPT.id)
+
+
     let response = {
         text: `Hola ${displayName}, no entiendo lo que me dices`
     };
