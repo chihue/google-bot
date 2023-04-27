@@ -30,7 +30,7 @@ export async function MongoConfig() {
 }
 
 export const collections = Object.freeze({
-    USERS: 'users',
+    GPTKEYS: 'gpt_keys',
 })
 
 export function getCollection(collection) {

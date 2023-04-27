@@ -22,16 +22,19 @@ export const chatRequest = {
         const displayName = body.user?.displayName;
         const isDialogEvent = body.isDialogEvent;
 
-        let text = 'Hola';
-
-
-        return await processMessage({
-            type,
-            commandId,
-            argumentText,
-            email,
-            displayName,
-            isDialogEvent,
-        });
-    },
+        try {
+            return await processMessage({
+                type,
+                commandId,
+                argumentText,
+                email,
+                displayName,
+                isDialogEvent,
+            });
+        } catch (err) {
+            return {
+                text: 'Lo siento, ha ocurrido un error ' + err.message
+            };
+        }
+    }
 };
